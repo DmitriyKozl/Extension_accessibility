@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://cognittrial.sharepoint.com/sites/Kozlov/SitePages/CollabHome.aspx",
+      "pageUrl": "",
       "customActions": {
         "e4be4510-3900-460f-add2-255d8a20222a": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -16,7 +16,7 @@
       }
     },
     "accessibility": {
-      "pageUrl": "https://cognittrial.sharepoint.com/sites/Kozlov/SitePages/CollabHome.aspx",
+      "pageUrl": "",
       "customActions": {
         "e4be4510-3900-460f-add2-255d8a20222a": {
           "location": "ClientSideExtension.ApplicationCustomizer",
