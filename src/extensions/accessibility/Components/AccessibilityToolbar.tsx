@@ -3,15 +3,19 @@ import { Toggle } from "@fluentui/react/lib/Toggle";
 
 import styles from "../AppCustomizer.module.scss";
 const AccessibilityToolbar: React.FC = () => {
+
   const [highContrast, setHighContrast] = useState<boolean>(false);
+
+  //TOMMY: get your default value from the local storage immediately, otherwise a second unnecary render will occur in your effect (*1)
+  //state change = rerender
   const [isDarkMode, setIsDarkMode] = useState(true); // State to control dark mode
 
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("userDarkMode");
     const isSavedDarkMode = savedDarkMode === "true";
-    setIsDarkMode(isSavedDarkMode);
+    setIsDarkMode(isSavedDarkMode); // TOMMY: *1 -> rerender
     document.body.classList.toggle(styles.InvolvDarkMode, isSavedDarkMode);
-  }, []);
+  }, []); //TOMMY:triggers on start
 
   const handleThemeToggle = (checked: boolean): void => {
     setIsDarkMode(checked);
@@ -36,16 +40,20 @@ const AccessibilityToolbar: React.FC = () => {
     document.body.classList.toggle(styles.InvolvcontrastMode, checked);
   };
 
+  console.log("rendering"); //TOMMY:check output of this
+
   return (
     <div className={styles.app}>
       <div className={styles.top}>
         {zoomLevels.map(({ scale, fontSize }) => (
           <button
             key={scale}
-            className={`${styles[fontSize as keyof typeof styles]} ${
+            className={`${styles[fontSize as keyof typeof styles]} ${ //nice solution with the keys!
               styles.fontSizeButton
             }`}
-            onClick={() => setZoom(scale)}
+            onClick={() => setZoom(scale)} //TOMMY: better perhaps is to keep zoom in the state of the component, 
+            //use an effect with a zoom dependency to trigger the style change
+            //this way local state and change effects are separated
           >
             A
           </button>
@@ -57,7 +65,7 @@ const AccessibilityToolbar: React.FC = () => {
           onText="On"
           offText="Off"
           checked={highContrast}
-          onChange={(ev, checked: boolean) => handleHighContrastToggle(checked)}
+          onChange={(ev, checked: boolean) => handleHighContrastToggle(checked)} //TOMMY: create effect, similar to above
         />
       </div>
       <div className={styles.toggle}>
@@ -66,7 +74,7 @@ const AccessibilityToolbar: React.FC = () => {
           onText="On"
           offText="Off"
           checked={isDarkMode}
-          onChange={(ev, checked: boolean) => handleThemeToggle(checked)}
+          onChange={(ev, checked: boolean) => handleThemeToggle(checked)} //TOMMY: create effect, similar to above
         />
       </div>
     </div>
