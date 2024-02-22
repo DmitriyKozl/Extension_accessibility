@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "accessibility-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/accessibility/AccessibilityApplicationCustomizer.js",
+          "manifest": "./src/extensions/accessibility/AccessibilityApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AccessibilityApplicationCustomizerStrings": "lib/extensions/accessibility/loc/{locale}.js"
+  }
+}

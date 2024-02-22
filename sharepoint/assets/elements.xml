@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="Accessibility"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="e4be4510-3900-460f-add2-255d8a20222a"
+        ClientSideComponentProperties="{&quot;cssurl&quot;:&quot;/Site%20Assets/custom.css&quot;}">
+    </CustomAction>
+</Elements>
